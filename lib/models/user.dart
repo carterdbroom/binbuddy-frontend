@@ -1,8 +1,8 @@
 
 class User {
-  String name = "";
-  String email = "";
-  String password = "";
+  String name;
+  String email;
+  String password;
   int id = 0;
   int score = 0;
   
@@ -25,11 +25,11 @@ class User {
     this.score = s;
   }
   */
-  addID(int i){
+  void addID(int i){
     this.id = i;
   }
 
-  removeSensitiveInfo(){
+  void removeSensitiveInfo(){
     this.email = "";
     this.password = "";
   }
