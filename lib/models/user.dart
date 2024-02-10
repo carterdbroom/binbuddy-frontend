@@ -25,11 +25,11 @@ class User {
     this.score = s;
   }
   */
-  void addID(int i){
-    this.id = i;
+  void addID(int i) {
+    this.id = i; 
   }
 
-  void removeSensitiveInfo(){
+  void removeSensitiveInfo() {
     this.email = "";
     this.password = "";
   }

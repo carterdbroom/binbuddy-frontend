@@ -1,3 +1,5 @@
+
+import 'dart:async';
 import 'package:binbuddy_frontend/models/user.dart';
 
 class RequestSender {
@@ -6,18 +8,24 @@ class RequestSender {
 
   RequestSender(this.requestURI);
   /*
-  User tryLogin(String email, String password){
-
+  Future<User> tryLogin(String email, String password) async {
     try {
-
-    } catch{
-      
+      final user = await SomeFunction that sends a request to the backend see if there is such user
+      return user;
+    } on UserNotFoundError catch (err) {
+      return SomeFunction that tells the user that no such user was found.
     }
 
   }
 
-  User trySignUp(User user){
-    
+  Future<User> trySignUp(User u) async {
+    try {
+      final id = await SomeFunction that sends a request to the backend to generate and id.
+      User user = User(u.name, u.email, u.password, id, 0);
+      return user;
+    } on SomeError catch (err) {
+      return SomeFunction that tells the user there was an error.
+    }
   }
   
   */
