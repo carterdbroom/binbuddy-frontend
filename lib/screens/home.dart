@@ -19,7 +19,10 @@ class HomePage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.camera),
             label: "Waste Wizard",
-          
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.leaderboard_rounded),
+            label: "Leaderboard",
           ),
         ],
       ),

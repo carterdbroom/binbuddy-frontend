@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'package:binbuddy_frontend/models/user.dart';
 
@@ -20,7 +19,7 @@ class RequestSender {
 
   Future<User> trySignUp(User u) async {
     try {
-      final id = await SomeFunction that sends a request to the backend to generate and id.
+      final id = await SomeFunction that sends a request to the backend to generate an id.
       User user = User(u.name, u.email, u.password, id, 0);
       return user;
     } on SomeError catch (err) {
