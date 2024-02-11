@@ -33,4 +33,24 @@ class User {
     this.email = "";
     this.password = "";
   }
+
+  static User fromMap(Map<String, dynamic> map) {
+    return User(
+      map['name'],
+      map['email'],
+      map['password'],
+      map['id'],
+      map['score']
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'email': email,
+      'password': password,
+      'id': id,
+      'score': score
+    };
+  }
 }
