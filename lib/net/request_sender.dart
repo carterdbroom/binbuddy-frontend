@@ -29,7 +29,7 @@ class RequestSender {
       var body = jsonDecode(response.body) as Map<String, dynamic>;
 
       User user = User.fromMap(body['user']);
-
+    
       return user;
   }
 
