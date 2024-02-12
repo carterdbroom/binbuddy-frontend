@@ -14,7 +14,6 @@ class RequestSender {
     } on UserNotFoundError catch (err) {
       return SomeFunction that tells the user that no such user was found.
     }
-
   }
 
   Future<User> trySignUp(User u) async {
@@ -26,6 +25,16 @@ class RequestSender {
       return SomeFunction that tells the user there was an error.
     }
   }
+
   
-  */
+  Future<List<User>>? getLeaderboard() async {
+    try {
+      final leaderboard = await SomeFunction that sends a request to the backend of 
+      return leaderboard;
+    } on SomeError (err) {
+      return SomeFunction that tells the user that we could retrieve the data
+    }
+  }
+*/
+  
 }
