@@ -12,6 +12,7 @@ import 'package:binbuddy_frontend/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    //TODO! Add some test cases
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
