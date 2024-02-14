@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "892490711823",
+    "project_id": "binbuddy-8df97",
+    "storage_bucket": "binbuddy-8df97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892490711823:android:33c43c53578942d900f47a",
+        "android_client_info": {
+          "package_name": "com.example.binbuddy_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNLsRyHOrOMAYKuKoTfVSPdq0W36HHzgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

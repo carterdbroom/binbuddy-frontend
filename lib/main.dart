@@ -1,7 +1,17 @@
+import 'package:binbuddy_frontend/net/request_sender.dart';
 import 'package:flutter/material.dart';
+import 'models/user.dart';
 import 'screens/home.dart';
 import 'themes/theme_constants.dart';
-void main() {
+import 'package:firebase_core/firebase_core.dart' show Firebase;
+import 'firebase_options.dart' show DefaultFirebaseOptions;
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  //RequestSender.trySignUp(User("ethan", "ethan@gmail.com", "bigmoneyethan", 0, 0));
+
   runApp(const MyApp());
 }
 
