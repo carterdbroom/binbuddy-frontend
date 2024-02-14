@@ -42,15 +42,4 @@ class RequestSender {
 
     return user;
   }
-  /*
-    Future<User> trySignUp(User user) async {
-    final response = await makePostRequest('/signup',user.toMap());
-
-    var body = jsonDecode(response.body) as Map<String, dynamic>;
-
-    user.addID(body['id']);
-
-    return user;
-  }
-  */
 }
