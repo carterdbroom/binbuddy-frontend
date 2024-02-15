@@ -1,0 +1,17 @@
+Textile
+Shoe
+Sheet
+Towel
+Curtain
+Pillow
+Mattress
+Rug
+Blanket
+Stuffed animal
+Backpack
+Handbag
+Wallet
+Belt
+Hat
+Glove
+Scarve
