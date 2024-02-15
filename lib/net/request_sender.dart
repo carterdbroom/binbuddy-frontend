@@ -23,8 +23,8 @@ class RequestSender {
 
   static Future<UserCredential> trySignUp(User user) async {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-              email: user.email,
-              password: user.password,
+              email: user.email!,
+              password: user.password!,
       );
 
       if(credential.user == null)
@@ -43,5 +43,22 @@ class RequestSender {
       );
 
       return credential;
+  }
+
+  static Future<List<User>> tryGetLeaderboard() async {
+      final db = FirebaseFirestore.instance;
+
+      final result = await db.collection('Leaderboard')
+                .where('score', isGreaterThan: 0)
+                .orderBy('score', descending: true)
+                .get();
+
+      List<User> output = [];
+
+      for(var i = 0; i < result.size; i++) {
+          output.add(User.fromMap(result.docs[i].data()));
+      }
+
+      return output;
   }
 }

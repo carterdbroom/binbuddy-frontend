@@ -1,10 +1,10 @@
 
 class User {
-  String name;
-  String email;
-  String password;
-  int id = 0;
-  int score = 0;
+  String? name;
+  String? email;
+  String? password;
+  String? id = "";
+  int? score = 0;
   
   User.attempt(this.name, this.email, this.password);
 
@@ -25,8 +25,8 @@ class User {
     this.score = s;
   }
   */
-  void addID(int i) {
-    this.id = i; 
+  void addID(String i) {
+    id = i; 
   }
 
   void removeSensitiveInfo() {
@@ -40,7 +40,7 @@ class User {
       map['email'],
       map['password'],
       map['id'],
-      map['score']
+      map['score'],
     );
   }
 
