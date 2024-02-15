@@ -10,6 +10,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  /*final users = await RequestSender.tryGetLeaderboard();
+
+  for(var i = 0; i < users.length; i++) {
+    print(users[i].name);
+  }*/
+
   //RequestSender.trySignUp(User("ethan", "ethan@gmail.com", "bigmoneyethan", 0, 0));
 
   runApp(const MyApp());
