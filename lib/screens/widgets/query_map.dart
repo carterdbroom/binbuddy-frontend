@@ -21,18 +21,21 @@ class _QueryMapState extends State<QueryMap> {
     }
 
     void updateMarkers() async {
-        print("here");
-        
-        setState(() async {
-          markers = await Maps.queryLocations(widget.query, position.latitude, position.longitude);
-        }); 
+        var result = await Maps.queryLocations(widget.query, position.latitude, position.longitude);
+        //print(result);
+        setState(() {
+          markers = result;
+          //markers = [ Marker(markerId: MarkerId("0"), position: position, infoWindow: InfoWindow(title: "Test") ) ];
+        });
     }
 
     @override
     Widget build(BuildContext context) {
+        //print(markers);
+        
         return GoogleMap(
-          initialCameraPosition: CameraPosition(target: position),
-          markers: markers.toSet(),
+          initialCameraPosition: CameraPosition(target: position, zoom: 12),
+          markers: markers == [] ? {Marker(markerId: MarkerId("0"), position: position, infoWindow: InfoWindow(title: "Test") )} : markers.toSet(),
         );
     }
 }
