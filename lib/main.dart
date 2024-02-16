@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: QueryMap(query: "Textile recycle"), //const LandingPage(),
+      home: const LandingPage(),
       theme: defaultTheme,
     );
   }
