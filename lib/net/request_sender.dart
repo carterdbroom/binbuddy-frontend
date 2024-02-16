@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:binbuddy_frontend/models/user.dart';
-import 'package:http/http.dart';
 import 'package:firebase_auth/firebase_auth.dart' show 
-  FirebaseAuth, FirebaseAuthException, UserCredential;
+  FirebaseAuth;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RequestSender {

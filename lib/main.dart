@@ -1,4 +1,5 @@
 import 'package:binbuddy_frontend/net/request_sender.dart';
+import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/landing.dart';
 import 'package:flutter/material.dart';
 import 'models/user.dart';
@@ -12,6 +13,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  Vision.prepareFiles();
 
   /*final users = await RequestSender.tryGetLeaderboard();
 
