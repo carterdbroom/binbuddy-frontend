@@ -22,7 +22,7 @@ class Disposal {
       Disposal disposal = Vision.evaluateProperties(props);
 
       if(disposal.location == DisposalLocation.unknown) {
-          disposal.searchedLocations = Maps.queryLocations(disposal.locationKey);
+          //disposal.searchedLocations = await Maps.queryLocations(disposal.locationKey, 0, 0);
       }
 
       return disposal;

@@ -1,6 +1,8 @@
+import 'package:binbuddy_frontend/net/maps.dart';
 import 'package:binbuddy_frontend/net/request_sender.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/landing.dart';
+import 'package:binbuddy_frontend/screens/widgets/query_map.dart';
 import 'package:flutter/material.dart';
 import 'models/user.dart';
 import 'screens/home.dart';
@@ -14,7 +16,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  Vision.prepareFiles();
+  //Vision.prepareFiles();
+
+  //await Maps.queryLocations("Electronic recycle", 43.258012, -79.919929);
 
   /*final users = await RequestSender.tryGetLeaderboard();
 
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const LandingPage(),
+      home: QueryMap(query: "Electronic Recycle"), //const LandingPage(),
       theme: defaultTheme,
     );
   }
