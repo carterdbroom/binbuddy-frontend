@@ -1,4 +1,5 @@
 import 'package:binbuddy_frontend/net/request_sender.dart';
+import 'package:binbuddy_frontend/screens/landing.dart';
 import 'package:flutter/material.dart';
 import 'models/user.dart';
 import 'screens/home.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: const LandingPage(),
       theme: defaultTheme,
     );
   }
