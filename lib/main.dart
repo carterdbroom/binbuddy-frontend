@@ -22,7 +22,9 @@ void main() async {
     print(users[i].name);
   }*/
 
+
   //RequestSender.trySignUp(User("ethan", "ethan@gmail.com", "bigmoneyethan", "", 0));
+
 }
 
 class MyApp extends StatelessWidget {

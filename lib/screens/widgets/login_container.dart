@@ -10,17 +10,19 @@ class LoginContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(4.0),
       child: Container(
         decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 237, 203, 177),
           borderRadius: BorderRadius.circular(10.0),
           border: Border.all(
             color: const Color.fromARGB(255, 81, 41, 30), 
             width: 2.0
           ),
         ),
-        color: const Color.fromARGB(255, 237, 203, 177),
-        child: Column(children: children),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: children),
       ),
     );
   }

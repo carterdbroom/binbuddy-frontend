@@ -31,17 +31,22 @@ class LandingPage extends StatelessWidget {
                   );
                 },
                 child: const Text(
-                  "Login",       
+                  "Login",
+                  style: TextStyle(
+                    fontFamily: "Monospace",
+                  )       
                 )
               ),
               LoginButton(
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: ((context) => const SignupPage()))
-                  );
+                    MaterialPageRoute(builder: (context) => SignupPage()));
                 },  
                 child: const Text(
-                  "Signup"
+                  "Signup",
+                  style: TextStyle(
+                    fontFamily: "Monospace",
+                  )
                 ),
               ),
 
