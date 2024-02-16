@@ -6,6 +6,8 @@ import 'themes/theme_constants.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
 import 'firebase_options.dart' show DefaultFirebaseOptions;
 void main() async {
+  runApp(const MyApp());
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -16,9 +18,7 @@ void main() async {
     print(users[i].name);
   }*/
 
-  //RequestSender.trySignUp(User("ethan", "ethan@gmail.com", "bigmoneyethan", 0, 0));
-
-  runApp(const MyApp());
+  //RequestSender.trySignUp(User("ethan", "ethan@gmail.com", "bigmoneyethan", "", 0));
 }
 
 class MyApp extends StatelessWidget {
