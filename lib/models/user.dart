@@ -30,8 +30,8 @@ class User {
   }
 
   void removeSensitiveInfo() {
-    this.email = "";
-    this.password = "";
+    // email = "";
+    password = "";
   }
 
   static User fromMap(Map<String, dynamic> map) {
@@ -42,6 +42,15 @@ class User {
       map['id'],
       map['score'],
     );
+  }
+
+  Map<String, dynamic> toSafeMap() {
+    return {
+      'name': name,
+      'email': email,
+      'id': id,
+      'score': score
+    };
   }
 
   Map<String, dynamic> toMap() {
