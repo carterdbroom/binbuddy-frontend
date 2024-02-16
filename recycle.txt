@@ -1,40 +1,40 @@
 Newspaper
 Magazine
 Paper
-Envelopes,(without plastic windows)
+Envelopes
 Catalog
 Book,(with hardcovers removed)
-Box,(clean and free of dirt)
-Jar,(glass)
-Bottle,(must be Glass, PET, PP, or HDPE)
-Can, (Aluminum or Steel and empty)
-Aluminum foil,(clean)
-Pie pans, (Aluminum)
-Jug, (Plastic)
-Container, (Paper, Plastic)
-Lid, (various types)
-Cap, (various types)
-Bag, (Plastic)
-Plastic wrap (clean),
-Cling wrap,
-Saran wrap,
-Squeeze bottle, (LDPE)
-Cup, (PET or PP)
-Plastic cutlery, (check local guidelines)
-Plant pots, (PP)
-Toys, (plastic, clean, and intact)
-Plastic buckets, (clean and intact)
-Juice box,
-Juicebox,
-Paint can, (empty and dry)
-Bakeware, (Pyrex, etc.)
-Candle holder, (glass)
-Perfume bottle, (glass)
-Food storage containers, (Pyrex, etc.)
-Windowpane, (check local guidelines)
-Glassware, (plates, bowls, cups)
-Bicycle, (usable or for scrap metal)
-Printer cartridge, (check local guidelines)
+Box
+Jar
+Bottle
+Can
+Aluminum foil
+Pie pan
+Jug
+Container
+Lid
+Bottle Cap
+Bag
+Plastic wrap
+Cling wrap
+Saran wrap
+Squeeze bottle
+Cup
+Cutlery
+Plant pots
+Toys
+Plastic buckets
+Juice box
+Juicebox
+Paint can
+Bakeware
+Candle holder
+Perfume bottle
+Food storage containers
+Windowpane
+Glassware
+Bicycle
+Printer cartridge
 Coat-hanger
 Hanger
 Pot
@@ -44,9 +44,9 @@ Fork
 Knife
 Spoon
 Spork
-Pipe, (Metal)
+Pipe
 Wire
-Shelving units, (metal)
+Shelving units
 Jewelry
 Sunglasses
 Holiday decorations
