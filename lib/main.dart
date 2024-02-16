@@ -1,4 +1,5 @@
 import 'package:binbuddy_frontend/net/request_sender.dart';
+import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/landing.dart';
 import 'package:flutter/material.dart';
 import 'models/user.dart';
@@ -8,9 +9,12 @@ import 'package:firebase_core/firebase_core.dart' show Firebase;
 import 'firebase_options.dart' show DefaultFirebaseOptions;
 void main() async {
   runApp(const MyApp());
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  Vision.prepareFiles();
 
   /*final users = await RequestSender.tryGetLeaderboard();
 
@@ -18,7 +22,8 @@ void main() async {
     print(users[i].name);
   }*/
 
-  //RequestSender.trySignUp(User("ethan", "ethan@gmail.com", "bigmoneyethan", 0, 0));
+
+  //RequestSender.trySignUp(User("ethan", "ethan@gmail.com", "bigmoneyethan", "", 0));
 
 }
 
