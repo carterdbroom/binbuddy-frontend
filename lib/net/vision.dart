@@ -1,6 +1,6 @@
-import 'dart:ui';
 import 'package:binbuddy_frontend/models/io.dart';
 import 'package:binbuddy_frontend/net/disposal.dart';
+import 'package:flutter/widgets.dart';
 
 class Vision {
     static var recyclables = <String>{};
@@ -17,10 +17,10 @@ class Vision {
     }
 
     static void prepareFiles() async {
-        recyclables = await readLines("../recycle.txt");
-        compostables = await readLines("../compost.txt");
-        electronicRecycling = await readLines("../electron-depot.txt");
-        textileRecycling = await readLines("../texttile-recycling.txt");
+        recyclables = await readLines("./assets/recycle.txt");
+        compostables = await readLines("./assets/compost.txt");
+        electronicRecycling = await readLines("./assets/electron-depot.txt");
+        textileRecycling = await readLines("./assets/textile-recycling.txt");
     }
 
     static Disposal evaluateProperties(List<String> properties) {

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:binbuddy_frontend/models/stats.dart';
 import 'package:binbuddy_frontend/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart' show 
   FirebaseAuth;
@@ -42,6 +43,8 @@ class RequestSender {
       user.removeSensitiveInfo();
 
       user.addID(credential.user!.uid);
+
+      user.stats = Stats(0, 0, 0);
 
       await db().collection(collection).add(
         user.toSafeMap()

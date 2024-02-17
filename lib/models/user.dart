@@ -1,3 +1,4 @@
+import 'package:binbuddy_frontend/models/stats.dart';
 
 class User {
   String? name;
@@ -5,10 +6,11 @@ class User {
   String? password;
   String? id = "";
   int? score = 0;
+  Stats? stats;
   
   User.attempt(this.name, this.email, this.password);
 
-  User(this.name, this.email, this.password, this.id, this.score);
+  User(this.name, this.email, this.password, this.id, this.score, this.stats);
   
   /*
   User.attempt(String n, String e, String pass){
@@ -41,6 +43,7 @@ class User {
       map['password'],
       map['id'],
       map['score'],
+      map['stats']
     );
   }
 
@@ -49,7 +52,8 @@ class User {
       'name': name,
       'email': email,
       'id': id,
-      'score': score
+      'score': score,
+      'stats': stats!.toMap()
     };
   }
 
@@ -59,7 +63,8 @@ class User {
       'email': email,
       'password': password,
       'id': id,
-      'score': score
+      'score': score,
+      'stats': stats!.toMap()
     };
   }
 }

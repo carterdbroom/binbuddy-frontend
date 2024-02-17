@@ -10,9 +10,11 @@ class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
     super.key,
     required this.camera,
+    required this.callAfter
   });
 
   final CameraDescription camera;
+  final Function callAfter;
 
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
@@ -75,20 +77,20 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
             // Attempt to take a picture and get the file `image`
             // where it was saved.
-            final image = await _controller.takePicture();
+            final xFile = await _controller.takePicture();
 
             if (!context.mounted) return;
 
-            // If the picture was taken, display it on a new screen.
-            await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DisplayPictureScreen(
-                  // Pass the automatically generated path to
-                  // the DisplayPictureScreen widget.
-                  imagePath: image.path,
-                ),
-              ),
-            );
+            final Image image;
+
+            if(kIsWeb) {
+                image = Image.network(xFile.path);
+            } else {
+                image = Image.file(File(xFile.path));
+            }
+
+            // If the picture was taken, call the callback.
+            widget.callAfter(image);
           } catch (e) {
             // If an error occurs, log the error to the console.
             print(e);

@@ -1,8 +1,8 @@
-import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
+
 
 Future<Set<String>> readLines(String path) async {
-    final file = File(path);
-    final lines = await file.readAsLines();
+    final lines = await rootBundle.loadString(path);
 
-    return lines.toSet();
+    return lines.split("\n").toSet();
 }
