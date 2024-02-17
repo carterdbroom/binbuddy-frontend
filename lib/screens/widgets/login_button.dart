@@ -9,7 +9,6 @@ class LoginButton extends StatelessWidget {
   final VoidCallback onTap;
   final Widget child;
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
