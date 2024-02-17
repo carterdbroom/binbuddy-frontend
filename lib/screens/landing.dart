@@ -27,7 +27,7 @@ class LandingPage extends StatelessWidget {
               LoginButton(
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: ((context) => const LoginPage()))
+                    MaterialPageRoute(builder: ((context) => LoginPage()))
                   );
                 },
                 child: const Text(
