@@ -5,11 +5,18 @@ import 'package:binbuddy_frontend/screens/widgets/login_container.dart';
 import 'package:binbuddy_frontend/screens/widgets/login_textbox.dart';
 import 'package:flutter/material.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
   SignupPage({super.key});
 
+  @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
   final nameController = TextEditingController();
+
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   @override
