@@ -13,6 +13,7 @@ class LoginTextBox extends StatelessWidget {
     final String? fontFamily;
     final TextEditingController? controller;
     final bool obscureText;
+    
   @override
   Widget build(BuildContext context) {
     return Padding(

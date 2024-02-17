@@ -20,8 +20,6 @@ class HomePage extends StatelessWidget {
     return g/total*100;
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,24 +36,93 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const Center(
-              child: Text(
-                "My Waste Habits",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: "Monospace",
-                ),
-              ),  
+            const Expanded(
+              child: Center(
+                child: Text(
+                  "My Waste Habits",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontFamily: "Monospace",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),  
+              ),
+            ),
+            Expanded(
+              child: Row(
+                children: [  
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Icon(Icons.delete_outline_rounded, size: 100,),
+                        const Text(
+                          "Garbage",
+                          style: TextStyle(
+                            fontFamily: "Monospace",
+                          ),
+                        ),
+                        Text(
+                          "Items: $garbageValue",
+                          style: const TextStyle(
+                            fontFamily: "Monospace",
+                          )
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Icon(Icons.compost, size: 100),
+                        const Text(
+                          "Compost",
+                          style: TextStyle(
+                            fontFamily: "Monospace",
+                          ),
+                        ),
+                        Text(
+                          "Items: $compostValue",
+                          style: const TextStyle(
+                            fontFamily: "Monospace",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Icon(Icons.recycling_rounded, size: 100),
+                        const Text(
+                          "Recycling",
+                          style: TextStyle(
+                            fontFamily: "Monospace",
+                          ),
+                        ),
+                        Text(
+                          "Items: $recyclingValue",
+                          style: const TextStyle(
+                            fontFamily: "Monospace",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: SegmentBar(
-                  segmentData: [
-                    SegmentBarModel(value: _getPercentage(10, 20, 30), color: Colors.black, label: "Garbage"),
-                    SegmentBarModel(value: _getPercentage(20, 10, 30), color: Colors.green, label: "Compost"),
-                    SegmentBarModel(value: _getPercentage(30, 20, 10), color: Colors.blue, label: "Recycling"),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 20.0),
+                  child: SegmentBar(
+                    segmentData: [
+                      SegmentBarModel(value: _getPercentage(10, 20, 30), color: Colors.black),
+                      SegmentBarModel(value: _getPercentage(20, 10, 30), color: Colors.green),
+                      SegmentBarModel(value: _getPercentage(30, 20, 10), color: Colors.blue),
+                    ],
+                  ),
                 ),
               ),
             ),
