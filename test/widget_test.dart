@@ -12,6 +12,6 @@ import 'package:binbuddy_frontend/main.dart';
 
 void main() {
   testWidgets('', (WidgetTester tester) async {
-    
+      
   });
 }

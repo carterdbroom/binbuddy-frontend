@@ -2,6 +2,7 @@ import 'package:binbuddy_frontend/net/maps.dart';
 import 'package:binbuddy_frontend/net/request_sender.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/landing.dart';
+import 'package:binbuddy_frontend/screens/waste_wizard.dart';
 import 'package:binbuddy_frontend/screens/widgets/query_map.dart';
 import 'package:flutter/material.dart';
 import 'models/user.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const LandingPage(),
+      home: WasteWizardPage(), // const LandingPage(),
       theme: defaultTheme,
     );
   }
