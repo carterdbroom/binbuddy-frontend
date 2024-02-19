@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: WasteWizardPage(), // const LandingPage(),
+      home: HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0), // const LandingPage(),
       theme: defaultTheme,
     );
   }
