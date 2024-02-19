@@ -1,9 +1,12 @@
+import 'package:binbuddy_frontend/screens/widgets/bottom_nav_bar.dart';
+import 'package:binbuddy_frontend/screens/leaderboard.dart';
+import 'package:binbuddy_frontend/screens/waste_wizard.dart';
 import 'package:segment_bar/percent_graph_model.dart';
 import 'package:segment_bar/segment_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
+  HomePage({
     required this.garbageValue,
     required this.compostValue,
     required this.recyclingValue,
@@ -129,22 +132,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: "Waste Wizard",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.leaderboard_rounded),
-            label: "Leaderboard",
-          ),
-        ],
-      ),
+      bottomNavigationBar: const Bottom(),
     );
   }
 }

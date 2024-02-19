@@ -14,9 +14,9 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,24 +38,24 @@ class _SignupPageState extends State<SignupPage> {
               LoginTextBox(
                 hintText: "Name",
                 fontFamily: "Monospace",
-                controller: nameController,
+                controller: _nameController,
                 obscureText: false,
               ),
               LoginTextBox(
                 hintText: "Email",
                 fontFamily: "Monospace",
-                controller: emailController,
+                controller: _emailController,
                 obscureText: false,
               ),
               LoginTextBox(
                 hintText: "Password",
                 fontFamily: "Monospace",
-                controller: passwordController,
+                controller: _passwordController,
                 obscureText: true,
               ),
               LoginButton(
                 onTap: () {
-                  User user = User.attempt(nameController.text, emailController.text, passwordController.text);
+                  User user = User.attempt(_nameController.text, _emailController.text, _passwordController.text);
                   RequestSender.trySignUp(user);
                 },
                 child: const Text(

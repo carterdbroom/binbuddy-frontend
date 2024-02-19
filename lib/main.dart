@@ -2,6 +2,7 @@ import 'package:binbuddy_frontend/net/maps.dart';
 import 'package:binbuddy_frontend/net/request_sender.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/landing.dart';
+import 'package:binbuddy_frontend/screens/leaderboard.dart';
 import 'package:binbuddy_frontend/screens/waste_wizard.dart';
 import 'package:binbuddy_frontend/screens/widgets/query_map.dart';
 import 'package:flutter/material.dart';
