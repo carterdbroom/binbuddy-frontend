@@ -1,5 +1,6 @@
 import 'package:binbuddy_frontend/net/disposal.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
+import 'package:binbuddy_frontend/screens/widgets/bottom_nav_bar.dart';
 import 'package:binbuddy_frontend/screens/widgets/camera.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -45,9 +46,20 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
     @override
     Widget build(BuildContext context) {
         if(camera != null) {
-            return TakePictureScreen(camera: camera!, callAfter: afterImage);
+          return Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: const Text(
+                "Waste Wizard",
+                style: TextStyle(
+                  fontFamily: "Monospace",
+                ),
+              ),
+            ), 
+            body: TakePictureScreen(camera: camera!, callAfter: afterImage),
+            bottomNavigationBar: const Bottom(),
+          );
         }
-
-        return const Text("Loading...");
+      return const Text("Loading...");
     }
 }
