@@ -63,8 +63,8 @@ class _LeaderboardState extends State<Leaderboard> {
           ),
         ),
       ),
-      body: _leaderboard.isNotEmpty ? Leaders(leaderboard: _leaderboard) : const Text("Loading"),
-      bottomNavigationBar: Bottom(),
+      body: _leaderboard.isNotEmpty ? Leaders(leaderboard: _leaderboard) : const Center(child: CircularProgressIndicator()),
+      bottomNavigationBar: const Bottom(),
     );
   }
 }
