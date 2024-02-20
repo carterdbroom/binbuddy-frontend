@@ -34,6 +34,7 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+        ext.kotlin_version = '1.7.1'
     }
 
     sourceSets {
