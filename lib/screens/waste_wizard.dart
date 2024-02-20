@@ -53,6 +53,14 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
 
     @override
     Widget build(BuildContext context) { 
+        
+        var backButton = IconButton(
+          icon: const Icon(Icons.arrow_back_outlined),
+          onPressed: () => {
+            setMode("")
+          },
+        );
+
         var bar = AppBar(
               centerTitle: true,
               title: const Text(
@@ -62,18 +70,33 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 ),
               ),
             );
+        
+        var barWithBack = AppBar(
+              leading: backButton,
+              centerTitle: true,
+              title: const Text(
+                "Waste Wizard",
+                style: TextStyle(
+                  fontFamily: "Monospace",
+                ),
+              ),
+            );
+
+
 
         if(mode == "") {
           return SelectMode(setMode: setMode, bar: bar);
         }
 
+
+
         if(camera != null && foundDisposal == null) {
           return Scaffold(
-            appBar: bar,
+            appBar: barWithBack,
             body: TakePictureScreen(camera: camera!, callAfter: afterImage),
             bottomNavigationBar: const Bottom(),
           );
-        } else if(camera != null) {
+        } else if(camera != null && foundDisposal != null) {
           return Scaffold (
             appBar: bar,
             body: QueryMap(
@@ -85,7 +108,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 )
           );
         }
-      return  const Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     }
 }
 
@@ -112,7 +135,7 @@ class SelectMode extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsetsDirectional.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 2, 10),
                     child: ElevatedButton(
                       onPressed: () => {
                           setMode("Track")
@@ -127,13 +150,13 @@ class SelectMode extends StatelessWidget {
                     ),
                   ), 
                   Padding(
-                    padding: const EdgeInsetsDirectional.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.fromLTRB(2, 10, 10, 10),
                     child: ElevatedButton(
                       onPressed: () => {
                           setMode("Discover")
                       }, 
                       child: Padding(
-                        padding: const EdgeInsets.all(5),
+                        padding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
                         child: Text(
                           "Discover", 
                           style: tStyle,
