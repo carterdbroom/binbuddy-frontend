@@ -81,16 +81,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
             if (!context.mounted) return;
 
-            final Image image;
-
-            if(kIsWeb) {
-                image = Image.network(xFile.path);
-            } else {
-                image = Image.file(File(xFile.path));
-            }
-
             // If the picture was taken, call the callback.
-            widget.callAfter(image);
+            widget.callAfter(xFile);
           } catch (e) {
             // If an error occurs, log the error to the console.
             print(e);
