@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
     int total = g + c + r;
 
     if(total == 0) {
-        return 100;
+        return 100/3;
     }
 
     return g/total*100;
