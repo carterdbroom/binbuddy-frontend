@@ -33,9 +33,8 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
       initCamera();
     }
     
-    void afterImage(Image img) async {
-        List<String> properties = await Vision.getImageProperties(img, 0.75);
-        Disposal disposal = Vision.evaluateProperties(properties);
+    void afterImage(XFile imgFile) async {
+        Disposal disposal = await Disposal.getDisposalLocation(imgFile);
 
         setState(() {
             foundDisposal = disposal;

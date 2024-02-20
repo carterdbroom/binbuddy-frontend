@@ -43,7 +43,7 @@ class User {
       map['password'],
       map['id'],
       map['score'],
-      map['stats']
+      Stats.fromMap(map['stats'])
     );
   }
 
