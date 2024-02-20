@@ -1,7 +1,8 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
 import 'package:binbuddy_frontend/net/maps.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 enum DisposalLocation {
   garbage,
@@ -13,7 +14,8 @@ enum DisposalLocation {
 class Disposal {
   DisposalLocation location;
   String locationKey;
-  List<String>? searchedLocations;
+  List<Marker>? searchedLocations;
+  Position? disposalPosition;
 
   Disposal(this.location, this.locationKey);
 
@@ -22,7 +24,8 @@ class Disposal {
       Disposal disposal = Vision.evaluateProperties(props);
 
       if(disposal.location == DisposalLocation.unknown) {
-          //disposal.searchedLocations = await Maps.queryLocations(disposal.locationKey, 0, 0);
+          disposal.disposalPosition = await Maps.getCurrentLocation();
+          disposal.searchedLocations = await Maps.queryLocations(disposal.locationKey, disposal.disposalPosition!);
       }
 
       return disposal;

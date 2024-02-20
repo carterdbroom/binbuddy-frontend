@@ -2,8 +2,10 @@ import 'package:binbuddy_frontend/net/disposal.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/widgets/bottom_nav_bar.dart';
 import 'package:binbuddy_frontend/screens/widgets/camera.dart';
+import 'package:binbuddy_frontend/screens/widgets/query_map.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class WasteWizardPage extends StatefulWidget {
   WasteWizardPage({super.key});
@@ -44,9 +46,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
 
     @override
     Widget build(BuildContext context) {
-        if(camera != null) {
-          return Scaffold(
-            appBar: AppBar(
+        var bar = AppBar(
               centerTitle: true,
               title: const Text(
                 "Waste Wizard",
@@ -54,9 +54,24 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                   fontFamily: "Monospace",
                 ),
               ),
-            ), 
+            );
+
+        if(camera != null && foundDisposal == null) {
+          return Scaffold(
+            appBar: bar,
             body: TakePictureScreen(camera: camera!, callAfter: afterImage),
             bottomNavigationBar: const Bottom(),
+          );
+        } else if(camera != null) {
+          return Scaffold (
+            appBar: bar,
+            body: QueryMap(
+                markers: foundDisposal!.searchedLocations!, 
+                position: LatLng(
+                    foundDisposal!.disposalPosition!.latitude, 
+                    foundDisposal!.disposalPosition!.longitude
+                    )
+                )
           );
         }
       return const Text("Loading...");

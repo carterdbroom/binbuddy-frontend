@@ -1,14 +1,6 @@
-import 'dart:convert';
-import 'dart:typed_data';
-import 'dart:io' show File;
-import 'dart:ui' show Image;
-import 'package:binbuddy_frontend/models/io.dart';
 import 'package:binbuddy_frontend/net/disposal.dart';
 import 'package:camera/camera.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:http/http.dart' as http;
 import 'package:google_vision_flutter/google_vision_flutter.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 class Vision {
     static var recyclables = <String>{};
@@ -47,7 +39,7 @@ class Vision {
           await googleVision.annotate(requests: requests);
 
         print("Made request.");
-        print(annotatedResponses.toJson());
+        //print(annotatedResponses.toJson());
 
 
         final labels = annotatedResponses.toJson()['responses'][0]['labelAnnotations'] as List<EntityAnnotation>;
@@ -59,12 +51,14 @@ class Vision {
             if(labels[i].score! < discretion) {
                 break;
             }
-            output.add(labels[i].description);
+            output.add(labels[i].description.trim());
         }
 
         for(var i = 0; i < objects.length; i++) {
-            output.add(objects[i].name);
+            output.add(objects[i].name.trim());
         }
+
+        print(output);
 
         return output;
     }
@@ -253,7 +247,12 @@ class Vision {
           "Projectors"
           "Microscope"
           "Lab instrument"
-          "Watch"
+          "Watch",
+          "Communication Device",
+          "Mobile phone",
+          "Portable communications device",
+          "Electronic device",
+          "Technology"
         };
 
         textileRecycling = {
@@ -273,26 +272,33 @@ class Vision {
             "Belt"
             "Hat"
             "Glove"
-            "Scarve"
+            "Scarve",
+            "Bedding",
+            "Linens"
         };
     }
 
     static Disposal evaluateProperties(List<String> properties) {
         for(var i = 0; i < properties.length; i++) {
             if(compostables.contains(properties[i])) {
+              print("Found ${properties[i]} as compost!");
               return Disposal.compost;
             }
             if(recyclables.contains(properties[i])) {
+              print("Found ${properties[i]} as recycling!");
               return Disposal.recycling;
             }
             if(electronicRecycling.contains(properties[i])) {
+              print("Found ${properties[i]} as e-recycling!");
               return Disposal.electronic;
             }
             if(textileRecycling.contains(properties[i])) {
+              print("Found ${properties[i]} as textile-recycling!");
               return Disposal.textile;
             }
         }
 
+        print("Found nothing, garbage :(");
         return Disposal.garbage;
     }
 }

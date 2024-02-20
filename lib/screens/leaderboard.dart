@@ -13,26 +13,30 @@ class Leaderboard extends StatefulWidget {
 
 
 class _LeaderboardState extends State<Leaderboard> {
-
   List<User> _leaderboard = [];
   bool isLoading = false;
   List<String> test = ["Bob", "Tim", "Joe", "Timmy", "John","Bob", "Tim", "Joe", "Timmy", "John","Bob", "Tim", "Joe", "Timmy", "John"]; 
+  
   @override
   void initState() {
-    initFunction();
     super.initState();
+    initFunction();
   }
 
   void initFunction() async {
-    setState(() {
+    /* setState(() {
       isLoading = true;
-    });
+    }); */
     
-    _leaderboard = await RequestSender.tryGetLeaderboard();
+    var newLeaderboard = await RequestSender.tryGetLeaderboard();
     
     setState(() {
-      isLoading = false;
+      _leaderboard = newLeaderboard;
     });
+
+    /* setState(() {
+      isLoading = false;
+    }); */
   }
 
   void updateLeaderboard() async {
@@ -47,11 +51,6 @@ class _LeaderboardState extends State<Leaderboard> {
     });
   }
 
-  String plusOne(int i) {
-    i += 1;
-    return i.toString();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,24 +63,39 @@ class _LeaderboardState extends State<Leaderboard> {
           ),
         ),
       ),
-      body: ListView.builder (
-        itemCount: test.length,
-        prototypeItem: ListTile(
-          title: Text(test.first),
-        ),
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Text(plusOne(index)),
-            title: Text(test[index]),
-            trailing: Text("30"),
-          );
-        },
-      ),
+      body: _leaderboard.isNotEmpty ? Leaders(leaderboard: _leaderboard) : const Text("Loading"),
       bottomNavigationBar: Bottom(),
     );
   }
 }
 
+class Leaders extends StatelessWidget {
+    const Leaders({super.key, required this.leaderboard});
+
+    final List<User> leaderboard;
+
+    String plusOne(int i) {
+      i += 1;
+      return i.toString();
+    }
+
+    @override
+    Widget build(BuildContext context) {
+          return ListView.builder (
+            itemCount: leaderboard.length,
+            prototypeItem: ListTile(
+              title: Text(leaderboard.first.name!),
+            ),
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: Text(plusOne(index)),
+                title: Text(leaderboard[index].name!),
+                trailing: Text(leaderboard[index].score!.toString()),
+              );
+            },
+          );
+    }
+}
 
 /*
 body: ListView.builder (
