@@ -19,6 +19,8 @@ void main() async {
   );
 
   Vision.prepareFiles();
+
+  //print(await Vision.testGetImageProperties());
 }
 
 class MyApp extends StatelessWidget {

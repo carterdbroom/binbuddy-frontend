@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:binbuddy_frontend/net/maps.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
@@ -16,8 +17,8 @@ class Disposal {
 
   Disposal(this.location, this.locationKey);
 
-  static Future<Disposal> getDisposalLocation(Image img) async {
-      final props = await Vision.getImageProperties(img, 0.7);
+  static Future<Disposal> getDisposalLocation(XFile imgFile) async {
+      final props = await Vision.getImageProperties(imgFile, 0.5);
       Disposal disposal = Vision.evaluateProperties(props);
 
       if(disposal.location == DisposalLocation.unknown) {

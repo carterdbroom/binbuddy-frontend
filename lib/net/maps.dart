@@ -16,11 +16,6 @@ class Maps {
                 "X-Goog-Api-Key": API_KEY,
                 "X-Goog-FieldMask": "places.location,places.formattedAddress,places.displayName.text",
             },
-            /*body: jsonEncode(
-            {
-                "maxResultCount": resultCount,
-                "rankPreferance": "DISTANCE",
-            })*/
             body: jsonEncode(
                 {
                     "textQuery": query,
