@@ -20,6 +20,11 @@ class HomePage extends StatelessWidget {
   // Returns the percentage of the first integer argument
   double _getPercentage(int g, int c, int r){
     int total = g + c + r;
+
+    if(total == 0) {
+        return 100;
+    }
+
     return g/total*100;
   }
 
@@ -121,9 +126,9 @@ class HomePage extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 20.0),
                   child: SegmentBar(
                     segmentData: [
-                      SegmentBarModel(value: _getPercentage(10, 20, 30), color: Colors.black),
-                      SegmentBarModel(value: _getPercentage(20, 10, 30), color: Colors.green),
-                      SegmentBarModel(value: _getPercentage(30, 20, 10), color: Colors.blue),
+                      SegmentBarModel(value: _getPercentage(garbageValue, compostValue, recyclingValue), color: Colors.black),
+                      SegmentBarModel(value: _getPercentage(compostValue, garbageValue, recyclingValue), color: Colors.green),
+                      SegmentBarModel(value: _getPercentage(recyclingValue, compostValue, garbageValue), color: Colors.blue),
                     ],
                   ),
                 ),

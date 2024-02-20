@@ -23,15 +23,22 @@ void main() async {
   //print(await Vision.testGetImageProperties());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+    const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0), // const LandingPage(),
-      theme: defaultTheme,
-    );
-  }
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+    User? user;
+
+    // This widget is the root of your application.
+    @override
+    Widget build(BuildContext context) {
+      return MaterialApp(
+        home: HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0), // const LandingPage(),
+        theme: defaultTheme,
+      );
+    }
 }

@@ -17,6 +17,7 @@ class WasteWizardPage extends StatefulWidget {
 class _WasteWizardPageState extends State<WasteWizardPage> {
     CameraDescription? camera;
     Disposal? foundDisposal;
+    String mode = "";
 
     void initCamera() async {
       WidgetsFlutterBinding.ensureInitialized();
@@ -44,8 +45,14 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
         });
     }
 
+    void setMode(String s) {
+        setState(() {
+          mode = s;
+        });
+    }
+
     @override
-    Widget build(BuildContext context) {
+    Widget build(BuildContext context) { 
         var bar = AppBar(
               centerTitle: true,
               title: const Text(
@@ -55,6 +62,10 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 ),
               ),
             );
+
+        if(mode == "") {
+          return SelectMode(setMode: setMode, bar: bar);
+        }
 
         if(camera != null && foundDisposal == null) {
           return Scaffold(
@@ -74,6 +85,66 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 )
           );
         }
-      return const Text("Loading...");
+      return  const Center(child: CircularProgressIndicator());
+    }
+}
+
+class SelectMode extends StatelessWidget {
+    SelectMode({super.key, required this.setMode, required this.bar});
+
+    final PreferredSizeWidget bar;
+    final Function setMode;
+
+    TextStyle tStyle = const 
+      TextStyle(
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontSize: 24
+      );
+
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: bar,
+            body: Container (
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsetsDirectional.symmetric(horizontal: 20),
+                    child: ElevatedButton(
+                      onPressed: () => {
+                          setMode("Track")
+                      }, 
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          "Track Waste", 
+                          style: tStyle,
+                          )
+                      )
+                    ),
+                  ), 
+                  Padding(
+                    padding: const EdgeInsetsDirectional.symmetric(horizontal: 20),
+                    child: ElevatedButton(
+                      onPressed: () => {
+                          setMode("Discover")
+                      }, 
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          "Discover", 
+                          style: tStyle,
+                          )
+                      )
+                    ),
+                  ),  
+                ],
+              )
+            ),
+            bottomNavigationBar: const Bottom(),
+        );
     }
 }

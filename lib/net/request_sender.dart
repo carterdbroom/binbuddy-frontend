@@ -26,7 +26,7 @@ class RequestSender {
 
   static Future<User> tryLogin(String email, String password) async {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-  
+
       return await getUser(credential.user!.uid);
   }
 
