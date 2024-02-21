@@ -45,7 +45,7 @@ class Vision {
         final rawObjects = annotatedResponses.toJson()['responses'][0]['localizedObjectAnnotations'] ;
 
         final labels = rawLabels != null ? rawLabels as List<EntityAnnotation> : [];
-        final objects = rawObjects != null ? rawLabels as List<LocalizedObjectAnnotation> : [];
+        final objects = rawObjects != null ? rawObjects as List<LocalizedObjectAnnotation> : [];
 
         List<String> output = [];
 
@@ -139,7 +139,8 @@ class Vision {
           "Book,(with hardcovers removed)"
           "Box"
           "Jar"
-          "Bottle"
+          "Bottle",
+          "Plastic botttle",
           "Can"
           "Aluminum foil"
           "Pie pan"
@@ -279,7 +280,8 @@ class Vision {
             "Glove"
             "Scarve",
             "Bedding",
-            "Linens"
+            "Linens",
+            "Clothing"
         };
     }
 
