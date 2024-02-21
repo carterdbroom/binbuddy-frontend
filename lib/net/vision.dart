@@ -139,7 +139,8 @@ class Vision {
           "Book,(with hardcovers removed)"
           "Box"
           "Jar"
-          "Bottle"
+          "Bottle",
+          "Plastic botttle",
           "Can"
           "Aluminum foil"
           "Pie pan"
@@ -279,7 +280,8 @@ class Vision {
             "Glove"
             "Scarve",
             "Bedding",
-            "Linens"
+            "Linens",
+            "Clothing"
         };
     }
 

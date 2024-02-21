@@ -1,6 +1,5 @@
 import 'package:binbuddy_frontend/models/user.dart';
 import 'package:binbuddy_frontend/net/disposal.dart';
-import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/home.dart';
 import 'package:binbuddy_frontend/screens/widgets/bottom_nav_bar.dart';
 import 'package:binbuddy_frontend/screens/widgets/camera.dart';
@@ -11,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class WasteWizardPage extends StatefulWidget {
-  WasteWizardPage({super.key, required this.user, required this.setUser});
+  const WasteWizardPage({super.key, required this.user, required this.setUser});
 
   final User? user;
   final Function setUser;
@@ -203,17 +202,70 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
             ),
           );
         } else if (camera != null && foundDisposal != null && mode == "Discover") {
+          Widget title = Text(
+            "Disposal Location: ${foundDisposal!.locationKey}",
+            style: const TextStyle(fontSize: 24)
+          );
+          Widget description = Text(foundDisposal!.description);
+
+          List<Widget> content = [ title, description ];
+
+          switch(foundDisposal!.location) {
+              case DisposalLocation.unknown:
+                content.add(
+                  SizedBox (
+                    height: 400,
+                    width: 600,
+                    child: QueryMap(
+                      markers: foundDisposal!.searchedLocations!, 
+                      position: LatLng(
+                        foundDisposal!.disposalPosition!.latitude, 
+                        foundDisposal!.disposalPosition!.longitude
+                      )
+                    ),
+                  )
+                );
+                break;
+              case DisposalLocation.recycling:
+                content.add(
+                  Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYY7_ycuMMr6eNbjZTWADe4VqeZMZ8mTvowQ&usqp=CAU", height: 400, width: 600)
+                );
+              case DisposalLocation.garbage:
+                content.add(
+                  Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxJhZLM9XbecBwMFsTsbpzj0aLZL2pQiLAUQ&usqp=CAU", height: 400, width: 600)
+                );
+              case DisposalLocation.compost:
+                content.add(
+                  Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmhgCZVOK_XNoO2F6FRaYyiDy68LywFhU_eQ&usqp=CAU", height: 400, width: 600)
+                );
+          }
+
+          content.add(
+            LoginButton(
+              onTap: () => {
+                setState(() {
+                  mode = "";
+                  foundDisposal = null;
+                })
+              }, 
+              child: const Text("Continue", style: TextStyle(fontSize: 18),)
+            )
+          );
+
           return Scaffold (
             appBar: bar,
-            body: QueryMap(
-                markers: foundDisposal!.searchedLocations!, 
-                position: LatLng(
-                    foundDisposal!.disposalPosition!.latitude, 
-                    foundDisposal!.disposalPosition!.longitude
-                    )
-                )
+            body: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                  Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: content
+                ),
+              ]
+              )
           );
-        }
+        } 
       return const Center(child: CircularProgressIndicator());
     }
 }
