@@ -1,3 +1,4 @@
+import 'package:binbuddy_frontend/models/user.dart';
 import 'package:binbuddy_frontend/net/disposal.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/home.dart';
@@ -10,7 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class WasteWizardPage extends StatefulWidget {
-  WasteWizardPage({super.key});
+  WasteWizardPage({super.key, required this.user, required this.setUser});
+
+  final User? user;
+  final Function setUser;
 
   @override
   State<WasteWizardPage> createState() => _WasteWizardPageState();
@@ -84,17 +88,15 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
               ),
             );
 
-
-
-        if (mode == "") {
-          return SelectMode(setMode: setMode, bar: bar);
+        if(mode == "") {
+          return SelectMode(setMode: setMode, bar: bar, user: widget.user, setUser: widget.setUser,);
         }
 
         if (camera != null && foundDisposal == null) {
           return Scaffold(
             appBar: barWithBack,
             body: TakePictureScreen(camera: camera!, callAfter: afterImage),
-            bottomNavigationBar: const Bottom(),
+            bottomNavigationBar: Bottom(user: widget.user, setUser: widget.setUser,),
           );
         } else if (camera != null && foundDisposal != null && mode == "Track Waste") {
           return Scaffold(
@@ -221,10 +223,13 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
 }
 
 class SelectMode extends StatelessWidget {
-    SelectMode({super.key, required this.setMode, required this.bar});
+    SelectMode({super.key, required this.setMode, required this.bar, required this.user, required this.setUser});
 
     final PreferredSizeWidget bar;
     final Function setMode;
+    final User? user;
+    final Function setUser;
+
 
     TextStyle tStyle = const 
       TextStyle(
@@ -275,7 +280,7 @@ class SelectMode extends StatelessWidget {
                 ],
               )
             ),
-            bottomNavigationBar: const Bottom(),
+            bottomNavigationBar: Bottom(user: user, setUser: setUser),
         );
     }
 }

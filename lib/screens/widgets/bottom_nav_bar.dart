@@ -1,3 +1,4 @@
+import 'package:binbuddy_frontend/models/user.dart';
 import 'package:binbuddy_frontend/screens/home.dart';
 import 'package:binbuddy_frontend/screens/leaderboard.dart';
 import 'package:binbuddy_frontend/screens/waste_wizard.dart';
@@ -6,8 +7,10 @@ import 'package:flutter/material.dart';
 int _selectedIndex = 0;
 
 class Bottom extends StatefulWidget {
-  const Bottom({super.key});
+  const Bottom({super.key, required this.user, required this.setUser});
 
+  final User? user;
+  final Function setUser;
 
   @override
   State<Bottom> createState() => _BottomState();
@@ -15,6 +18,8 @@ class Bottom extends StatefulWidget {
 
 class _BottomState extends State<Bottom> {
   
+
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -46,18 +51,18 @@ class _BottomState extends State<Bottom> {
           _selectedIndex = index;
         });
         if (_selectedIndex == 0) {
-          /*Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0)),
-          );*/
+          Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => HomePage(user: widget.user, setUser: widget.setUser)),
+          );
         }
         else if (_selectedIndex == 1) {
           Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => WasteWizardPage()),
+            MaterialPageRoute(builder: (context) => WasteWizardPage(user: widget.user, setUser: widget.setUser)),
           );
         }
         else if (_selectedIndex == 2) {
           Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => Leaderboard()),
+            MaterialPageRoute(builder: (context) => Leaderboard(user: widget.user, setUser: widget.setUser)),
           );
         }
       },

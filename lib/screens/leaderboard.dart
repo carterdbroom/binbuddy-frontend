@@ -5,7 +5,10 @@ import 'package:binbuddy_frontend/models/user.dart';
 import 'package:binbuddy_frontend/net/request_sender.dart';
 
 class Leaderboard extends StatefulWidget {
-  Leaderboard({super.key});
+  Leaderboard({super.key, required this.user, required this.setUser});
+
+  final User? user;
+  final Function setUser;
 
   @override
   State<Leaderboard> createState() => _LeaderboardState();
@@ -64,7 +67,7 @@ class _LeaderboardState extends State<Leaderboard> {
         ),
       ),
       body: _leaderboard.isNotEmpty ? Leaders(leaderboard: _leaderboard) : const Center(child: CircularProgressIndicator()),
-      bottomNavigationBar: const Bottom(),
+      bottomNavigationBar: Bottom(user: widget.user, setUser:  widget.setUser,),
     );
   }
 }
