@@ -14,16 +14,11 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(user == null);
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => {
+    //print(user == null);
+    Future.delayed(Duration.zero, () {
       if (user != null) {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: ((context) => HomePage(user: user, setUser: setUser)))
-        )
-        //print("Returning homepage!");
-        //return HomePage(user: user, setUser: setUser);
-      }
+        Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+      }  
     });
 
     return Scaffold(
@@ -43,9 +38,7 @@ class LandingPage extends StatelessWidget {
             children: [
               LoginButton(
                 onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: ((context) => LoginPage(setUser: setUser)))
-                  );
+                  Navigator.pushNamed(context, '/login');
                 },
                 child: const Text(
                   "Login",
@@ -56,8 +49,7 @@ class LandingPage extends StatelessWidget {
               ),
               LoginButton(
                 onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => SignupPage(setUser: setUser)));
+                  Navigator.pushNamed(context, '/signup');
                 },  
                 child: const Text(
                   "Signup",
@@ -66,7 +58,6 @@ class LandingPage extends StatelessWidget {
                   )
                 ),
               ),
-
             ],
           ),
         ],

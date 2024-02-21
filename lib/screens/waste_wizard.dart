@@ -158,7 +158,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 ),
               ],
             ),
-            bottomNavigationBar: const Bottom(),
+            bottomNavigationBar: Bottom(user: widget.user, setUser: widget.setUser,),
           );
         } else if (camera != null && foundDisposal != null && mode == "Correct") {
           return Scaffold(
@@ -169,9 +169,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 const Icon(Icons.check_rounded),
                 LoginButton(
                   onTap: () {
-                    Navigator.pushReplacement(context, 
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                    );
+                    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                   },
                   child: const Text(
                     "Continue",
@@ -192,9 +190,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 const Icon(Icons.close_rounded),
                 LoginButton(
                   onTap: () {
-                    Navigator.pushReplacement(context, 
-                    MaterialPageRoute(builder: (context) => HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0,)),
-                    );
+                    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                   },
                   child: const Text(
                     "Continue",
