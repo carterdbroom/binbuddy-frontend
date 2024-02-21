@@ -3,6 +3,7 @@ import 'package:binbuddy_frontend/net/request_sender.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:binbuddy_frontend/screens/landing.dart';
 import 'package:binbuddy_frontend/screens/leaderboard.dart';
+import 'package:binbuddy_frontend/screens/login.dart';
 import 'package:binbuddy_frontend/screens/waste_wizard.dart';
 import 'package:binbuddy_frontend/screens/widgets/query_map.dart';
 import 'package:flutter/material.dart';
@@ -33,11 +34,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
     User? user;
 
+    void setUser(User u) {
+        setState(() {
+          user = u;
+        });
+    }
+
     // This widget is the root of your application.
     @override
     Widget build(BuildContext context) {
       return MaterialApp(
-        home: HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0), // const LandingPage(),
+        home: LandingPage(setUser: setUser, user: user),
         theme: defaultTheme,
       );
     }

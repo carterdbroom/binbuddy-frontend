@@ -1,3 +1,5 @@
+import 'package:binbuddy_frontend/models/user.dart';
+import 'package:binbuddy_frontend/screens/landing.dart';
 import 'package:binbuddy_frontend/screens/widgets/bottom_nav_bar.dart';
 import 'package:binbuddy_frontend/screens/leaderboard.dart';
 import 'package:binbuddy_frontend/screens/waste_wizard.dart';
@@ -7,22 +9,20 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({
-    required this.garbageValue,
-    required this.compostValue,
-    required this.recyclingValue,
+    required this.user,
+    required this.setUser,
     super.key}
     );
 
-  final int  garbageValue;
-  final int compostValue;
-  final int recyclingValue;
+  final User? user;
+  final Function setUser;
 
   // Returns the percentage of the first integer argument
   double _getPercentage(int g, int c, int r){
     int total = g + c + r;
 
     if(total == 0) {
-        return 100;
+        return 100/3;
     }
 
     return g/total*100;
@@ -30,6 +30,16 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(user == null) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: ((context) => LandingPage(setUser: setUser, user: user)))
+      );
+    }
+
+    int garbageValue = user!.stats!.numWasted;
+    int recyclingValue = user!.stats!.numRecycled;
+    int compostValue = user!.stats!.numComposted;
+    
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

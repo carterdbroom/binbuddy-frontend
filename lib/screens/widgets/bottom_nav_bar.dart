@@ -46,9 +46,9 @@ class _BottomState extends State<Bottom> {
           _selectedIndex = index;
         });
         if (_selectedIndex == 0) {
-          Navigator.pushReplacement(context,
+          /*Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0)),
-          );
+          );*/
         }
         else if (_selectedIndex == 1) {
           Navigator.pushReplacement(context,
