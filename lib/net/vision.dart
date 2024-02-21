@@ -98,8 +98,11 @@ class Vision {
         print(annotatedResponses.toJson());
 
 
-        final labels = annotatedResponses.toJson()['responses'][0]['labelAnnotations'] as List<EntityAnnotation>;
-        final objects = annotatedResponses.toJson()['responses'][0]['localizedObjectAnnotations'] as List<LocalizedObjectAnnotation>;
+        final rawLabels = annotatedResponses.toJson()['responses'][0]['labelAnnotations'];
+        final rawObjects = annotatedResponses.toJson()['responses'][0]['localizedObjectAnnotations'] ;
+
+        final labels = rawLabels != null ? rawLabels as List<EntityAnnotation> : [];
+        final objects = rawObjects != null ? rawLabels as List<LocalizedObjectAnnotation> : [];
 
         List<String> output = [];
 
