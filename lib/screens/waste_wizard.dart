@@ -168,9 +168,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 const Icon(Icons.check_rounded),
                 LoginButton(
                   onTap: () {
-                    Navigator.pushReplacement(context, 
-                    MaterialPageRoute(builder: (context) => HomePage(user: widget.user, setUser: widget.setUser)),
-                    );
+                    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                   },
                   child: const Text(
                     "Continue",
@@ -191,9 +189,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 const Icon(Icons.close_rounded),
                 LoginButton(
                   onTap: () {
-                    Navigator.pushReplacement(context, 
-                    MaterialPageRoute(builder: (context) => HomePage(user: widget.user, setUser: widget.setUser,)),
-                    );
+                    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                   },
                   child: const Text(
                     "Continue",

@@ -51,19 +51,13 @@ class _BottomState extends State<Bottom> {
           _selectedIndex = index;
         });
         if (_selectedIndex == 0) {
-          Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => HomePage(user: widget.user, setUser: widget.setUser)),
-          );
+          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
         }
         else if (_selectedIndex == 1) {
-          Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => WasteWizardPage(user: widget.user, setUser: widget.setUser)),
-          );
+          Navigator.pushNamedAndRemoveUntil(context, '/wastewizard', (route) => false);
         }
         else if (_selectedIndex == 2) {
-          Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => Leaderboard(user: widget.user, setUser: widget.setUser)),
-          );
+          Navigator.pushNamedAndRemoveUntil(context, '/leaderboard', (route) => false);
         }
       },
 

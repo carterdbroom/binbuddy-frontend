@@ -30,13 +30,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) => {
-      if (user != null) {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: ((context) => LandingPage(user: user, setUser: setUser)))
-        )
-        //print("Returning homepage!");
-        //return HomePage(user: user, setUser: setUser);
+    Future.delayed(Duration.zero, () {
+      if (user == null) {
+        Navigator.pushNamedAndRemoveUntil(context, '/landing', (route) => false);
       }
     });
 
