@@ -45,6 +45,7 @@ class _MyAppState extends State<MyApp> {
     @override
     Widget build(BuildContext context) {
       return MaterialApp(
+        debugShowCheckedModeBanner: false,
         initialRoute: '/landing',
         routes: {
           '/landing': (context) => LandingPage(setUser: setUser, user: user),
