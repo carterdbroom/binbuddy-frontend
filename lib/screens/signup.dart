@@ -6,7 +6,9 @@ import 'package:binbuddy_frontend/screens/widgets/login_textbox.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
-  SignupPage({super.key});
+  SignupPage({super.key, required this.setUser});
+
+  final Function setUser;
 
   @override
   State<SignupPage> createState() => _SignupPageState();
@@ -17,6 +19,12 @@ class _SignupPageState extends State<SignupPage> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  void signup() async {
+      User user = User.attempt(_nameController.text, _emailController.text, _passwordController.text);
+      user = await RequestSender.trySignUp(user);
+      widget.setUser(user);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +62,7 @@ class _SignupPageState extends State<SignupPage> {
                 obscureText: true,
               ),
               LoginButton(
-                onTap: () {
-                  User user = User.attempt(_nameController.text, _emailController.text, _passwordController.text);
-                  RequestSender.trySignUp(user);
-                },
+                onTap: signup,
                 child: const Text(
                   "Signup",
                   style: TextStyle(

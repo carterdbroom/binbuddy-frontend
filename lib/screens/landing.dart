@@ -1,4 +1,5 @@
 import 'package:binbuddy_frontend/models/user.dart';
+import 'package:binbuddy_frontend/screens/home.dart';
 import 'package:binbuddy_frontend/screens/login.dart';
 import 'package:binbuddy_frontend/screens/signup.dart';
 import 'package:binbuddy_frontend/screens/widgets/login_button.dart';
@@ -6,13 +7,19 @@ import 'package:flutter/material.dart';
 
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({super.key, required this.user, required this.setUser});
+  const LandingPage({super.key, required this.setUser, required this.user});
 
-  final User user;
   final Function setUser;
+  final User? user;
 
   @override
   Widget build(BuildContext context) {
+    if (user != null) {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: ((context) => HomePage(user: user, setUser: setUser)))
+        );
+    }
+    
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +51,7 @@ class LandingPage extends StatelessWidget {
               LoginButton(
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => SignupPage()));
+                    MaterialPageRoute(builder: (context) => SignupPage(setUser: setUser)));
                 },  
                 child: const Text(
                   "Signup",
