@@ -14,12 +14,18 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (user != null) {
+    print(user == null);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => {
+      if (user != null) {
         Navigator.of(context).push(
           MaterialPageRoute(builder: ((context) => HomePage(user: user, setUser: setUser)))
-        );
-    }
-    
+        )
+        //print("Returning homepage!");
+        //return HomePage(user: user, setUser: setUser);
+      }
+    });
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

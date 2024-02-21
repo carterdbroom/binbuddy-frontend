@@ -147,7 +147,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const Bottom(),
+      bottomNavigationBar: Bottom(user: user, setUser: setUser),
     );
   }
 }
