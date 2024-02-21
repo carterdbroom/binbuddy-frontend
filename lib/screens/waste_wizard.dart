@@ -170,7 +170,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 LoginButton(
                   onTap: () {
                     Navigator.pushReplacement(context, 
-                    MaterialPageRoute(builder: (context) => HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0,)),
+                    MaterialPageRoute(builder: (context) => HomePage()),
                     );
                   },
                   child: const Text(
