@@ -14,14 +14,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('vision', (WidgetTester tester) async {
+  /*testWidgets('vision', (WidgetTester tester) async {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
       
       Vision.prepareFiles();
-  });
-  /*testWidgets('vision', (WidgetTester tester) async {
-      await Vision.getImageProperties(Image.file(File("")), 0);
   });*/
+  testWidgets('vision', (WidgetTester tester) async {
+      await Vision.testGetImageProperties();
+  });
 }
