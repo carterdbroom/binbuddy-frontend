@@ -1,8 +1,10 @@
 import 'package:binbuddy_frontend/models/user.dart';
 import 'package:binbuddy_frontend/net/disposal.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
+import 'package:binbuddy_frontend/screens/home.dart';
 import 'package:binbuddy_frontend/screens/widgets/bottom_nav_bar.dart';
 import 'package:binbuddy_frontend/screens/widgets/camera.dart';
+import 'package:binbuddy_frontend/screens/widgets/login_button.dart';
 import 'package:binbuddy_frontend/screens/widgets/query_map.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +59,26 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
 
     @override
     Widget build(BuildContext context) { 
+        
+        var backButton = IconButton(
+          icon: const Icon(Icons.arrow_back_outlined),
+          onPressed: () {
+            setMode("");
+          },
+        );
+
         var bar = AppBar(
+              centerTitle: true,
+              title: const Text(
+                "Waste Wizard",
+                style: TextStyle(
+                  fontFamily: "Monospace",
+                ),
+              ),
+            );
+        
+        var barWithBack = AppBar(
+              leading: backButton,
               centerTitle: true,
               title: const Text(
                 "Waste Wizard",
@@ -71,13 +92,121 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
           return SelectMode(setMode: setMode, bar: bar, user: widget.user, setUser: widget.setUser,);
         }
 
-        if(camera != null && foundDisposal == null) {
+        if (camera != null && foundDisposal == null) {
           return Scaffold(
-            appBar: bar,
+            appBar: barWithBack,
             body: TakePictureScreen(camera: camera!, callAfter: afterImage),
             bottomNavigationBar: Bottom(user: widget.user, setUser: widget.setUser,),
           );
-        } else if(camera != null) {
+        } else if (camera != null && foundDisposal != null && mode == "Track Waste") {
+          return Scaffold(
+            appBar: bar,
+            body: Column(
+              children: [
+                const Text(
+                  "Scan Complete!",
+                  style: TextStyle(
+                    fontFamily: "Monospace",
+                  )
+                ),
+                const Text(
+                  "Where Should It Go?",
+                  style: TextStyle(
+                    fontFamily: "Monospace",
+                  ),
+                ),
+                Row(
+                  children: [
+                    LoginButton(
+                      onTap:() {
+                        if (foundDisposal!.locationKey == "Garbage"){
+                          setMode("Correct");
+                        } else {
+                          setMode("Incorrect");
+                        }
+                      },
+                      child: const Text(
+                        "Garbage",
+                      ),
+                    ),
+                    LoginButton(
+                      onTap:() {
+                        if (foundDisposal!.locationKey == "Compost"){
+                          setMode("Correct");
+                        } else {
+                          setMode("Incorrect");
+                        }
+                      },
+                      child: const Text(
+                        "Compost",
+                      ),
+                    ),
+                    LoginButton(
+                      onTap:() {
+                        if (foundDisposal!.locationKey == "Recycling"){
+                          setMode("Correct");
+                          
+                        } else {
+                          setMode("Incorrect");
+                        }
+                      },
+                      child: const Text(
+                        "Recycling",
+                      ),
+                    ),           
+                  ],
+                ),
+              ],
+            ),
+            bottomNavigationBar: const Bottom(),
+          );
+        } else if (camera != null && foundDisposal != null && mode == "Correct") {
+          return Scaffold(
+            backgroundColor: Colors.green,
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.check_rounded),
+                LoginButton(
+                  onTap: () {
+                    Navigator.pushReplacement(context, 
+                    MaterialPageRoute(builder: (context) => HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0,)),
+                    );
+                  },
+                  child: const Text(
+                    "Continue",
+                    style: TextStyle(
+                      fontFamily: "Monospace",
+                    ),
+                  ),
+                ),
+              ],           
+            ),
+          );
+        } else if (camera != null && foundDisposal != null && mode == "Correct") {
+          return Scaffold(
+            backgroundColor: Colors.green,
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.close_rounded),
+                LoginButton(
+                  onTap: () {
+                    Navigator.pushReplacement(context, 
+                    MaterialPageRoute(builder: (context) => HomePage(garbageValue: 0, compostValue: 0, recyclingValue: 0,)),
+                    );
+                  },
+                  child: const Text(
+                    "Continue",
+                    style: TextStyle(
+                      fontFamily: "Monospace",
+                    ),
+                  ),
+                ),
+              ],           
+            ),
+          );
+        } else if (camera != null && foundDisposal != null && mode == "Discover") {
           return Scaffold (
             appBar: bar,
             body: QueryMap(
@@ -89,7 +218,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 )
           );
         }
-      return  const Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     }
 }
 
@@ -119,7 +248,7 @@ class SelectMode extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsetsDirectional.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 2, 10),
                     child: ElevatedButton(
                       onPressed: () => {
                           setMode("Track")
@@ -134,13 +263,13 @@ class SelectMode extends StatelessWidget {
                     ),
                   ), 
                   Padding(
-                    padding: const EdgeInsetsDirectional.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.fromLTRB(2, 10, 10, 10),
                     child: ElevatedButton(
                       onPressed: () => {
                           setMode("Discover")
                       }, 
                       child: Padding(
-                        padding: const EdgeInsets.all(5),
+                        padding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
                         child: Text(
                           "Discover", 
                           style: tStyle,
