@@ -97,24 +97,28 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
             body: TakePictureScreen(camera: camera!, callAfter: afterImage),
             bottomNavigationBar: Bottom(user: widget.user, setUser: widget.setUser,),
           );
-        } else if (camera != null && foundDisposal != null && mode == "Track Waste") {
+        } else if (camera != null && foundDisposal != null && mode == "Track") {
           return Scaffold(
             appBar: bar,
             body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
                   "Scan Complete!",
                   style: TextStyle(
                     fontFamily: "Monospace",
+                    fontSize: 20,
                   )
                 ),
                 const Text(
                   "Where Should It Go?",
                   style: TextStyle(
                     fontFamily: "Monospace",
+                    fontSize: 20,
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     LoginButton(
                       onTap:() {
@@ -144,7 +148,6 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                       onTap:() {
                         if (foundDisposal!.locationKey == "Recycling"){
                           setMode("Correct");
-                          
                         } else {
                           setMode("Incorrect");
                         }
@@ -165,10 +168,13 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.check_rounded),
+                const Icon(
+                  Icons.check_rounded,
+                  size: 75,
+                ),
                 LoginButton(
                   onTap: () {
-                    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+                    Navigator.pushNamedAndRemoveUntil(context, '/wastewizard', (route) => false);
                   },
                   child: const Text(
                     "Continue",
@@ -180,16 +186,19 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
               ],           
             ),
           );
-        } else if (camera != null && foundDisposal != null && mode == "Correct") {
+        } else if (camera != null && foundDisposal != null && mode == "Incorrect") {
           return Scaffold(
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.red,
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.close_rounded),
+                const Icon(
+                  Icons.close_rounded,
+                  size: 75,
+                ),
                 LoginButton(
                   onTap: () {
-                    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+                    Navigator.pushNamedAndRemoveUntil(context, '/wastewizard', (route) => false);
                   },
                   child: const Text(
                     "Continue",
@@ -254,16 +263,10 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
 
           return Scaffold (
             appBar: bar,
-            body: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                  Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: content
-                ),
-              ]
-              )
+              children: content
+            ),
           );
         } 
       return const Center(child: CircularProgressIndicator());
