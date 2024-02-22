@@ -155,8 +155,37 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                       child: const Text(
                         "Recycling",
                       ),
-                    ),           
+                    ),
                   ],
+                ), 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LoginButton(
+                      onTap:() {
+                        if (foundDisposal!.locationKey == "Textile Recycling Depot"){
+                          setMode("Correct");
+                        } else {
+                          setMode("Incorrect");
+                        }
+                      },
+                      child: const Text(
+                        "Textiles",
+                      ),
+                    ),   
+                    LoginButton(
+                      onTap:() {
+                        if (foundDisposal!.locationKey == "Electronic Recycling Depot"){
+                          setMode("Correct");
+                        } else {
+                          setMode("Incorrect");
+                        }
+                      },
+                      child: const Text(
+                        "Electronics",
+                      ),
+                    ),
+                  ],                                    
                 ),
               ],
             ),
