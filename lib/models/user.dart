@@ -1,4 +1,6 @@
 import 'package:binbuddy_frontend/models/stats.dart';
+import 'package:binbuddy_frontend/net/disposal.dart';
+import 'package:binbuddy_frontend/net/request_sender.dart';
 
 class User {
   String? name;
@@ -34,6 +36,29 @@ class User {
   void removeSensitiveInfo() {
     // email = "";
     password = "";
+  }
+
+  void updateStats(DisposalLocation disposal) {
+      switch (disposal) {
+          case DisposalLocation.compost:
+          stats!.numComposted += 1;
+          score = score == null ? null : score = score! + 3;
+          break;
+          case DisposalLocation.recycling:
+          stats!.numRecycled += 1;
+          score = score == null ? null : score = score! + 1;
+          break;
+          case DisposalLocation.unknown:
+          stats!.numRecycled += 1;
+          score = score == null ? null : score = score! + 2;
+          break;
+          default:
+          break;
+      }
+
+      print("user stats updated...");
+
+      RequestSender.updateUserData(this);
   }
 
   static User fromMap(Map<String, dynamic> map) {

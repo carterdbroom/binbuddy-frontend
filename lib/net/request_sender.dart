@@ -9,6 +9,24 @@ class RequestSender {
   static const collection = "Users";
   static FirebaseFirestore db() => FirebaseFirestore.instance;
 
+  static void updateUserData(User user) async {
+      print("getting user doc...");
+      
+      final userDoc = await db().collection(collection)
+                              .where('id', isEqualTo: user.id)
+                              .get();
+
+      print("getting doc id...");
+
+      final uDocId = userDoc.docs[0].id;
+
+      print("setting doc val...");
+
+      await db().doc(uDocId).set(user.toMap());
+
+      print("done");
+  }
+
   static Future<User> getUser(String uid) async {
       final result = await db().collection(collection)
                           .where('id', isEqualTo: uid)

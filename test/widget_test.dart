@@ -8,6 +8,9 @@
 import 'dart:io';
 
 import 'package:binbuddy_frontend/firebase_options.dart';
+import 'package:binbuddy_frontend/models/user.dart';
+import 'package:binbuddy_frontend/net/disposal.dart';
+import 'package:binbuddy_frontend/net/request_sender.dart';
 import 'package:binbuddy_frontend/net/vision.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -23,5 +26,14 @@ void main() {
   });*/
   testWidgets('vision', (WidgetTester tester) async {
       await Vision.testGetImageProperties();
+  });
+
+  testWidgets('stats update', (WidgetTester tester) async {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      
+      User u = await RequestSender.getUser("U3AFWBMHxbZr5Rf0QRg21qgge3I3");
+      u.updateStats(DisposalLocation.compost);
   });
 }
