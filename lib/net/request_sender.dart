@@ -22,7 +22,7 @@ class RequestSender {
 
       print("setting doc val...");
 
-      await db().doc(uDocId).set(user.toMap());
+      await db().collection(collection).doc(uDocId).set(user.toMap());
 
       print("done");
   }

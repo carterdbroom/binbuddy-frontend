@@ -131,59 +131,59 @@ class Vision {
 
     static void prepareFiles() async {
         recyclables = {
-          "Newspaper"
-          "Magazine"
-          "Paper"
-          "Envelopes"
-          "Catalog"
-          "Book,(with hardcovers removed)"
-          "Box"
-          "Jar"
+          "Newspaper",
+          "Magazine",
+          "Paper",
+          "Envelo,pes",
+          "Catalo,g",
+          "Book,(,wi,th hardcovers removed)",
+          "Box",
+          "Jar",
           "Bottle",
-          "Plastic botttle",
-          "Can"
-          "Aluminum foil"
-          "Pie pan"
-          "Jug"
-          "Container"
-          "Lid"
-          "Bottle Cap"
-          "Bag"
-          "Plastic wrap"
-          "Cling wrap"
-          "Saran wrap"
-          "Squeeze bottle"
-          "Cup"
-          "Cutlery"
-          "Plant pots"
-          "Toys"
-          "Plastic buckets"
-          "Juice box"
-          "Juicebox"
-          "Paint can"
-          "Bakeware"
-          "Candle holder"
-          "Perfume bottle"
-          "Food container"
-          "Windowpane"
-          "Glassware"
-          "Bicycle"
-          "Printer cartridge"
-          "Coat-hanger"
-          "Hanger"
-          "Pot"
-          "Pan"
-          "Silverware"
-          "Fork"
-          "Knife"
-          "Spoon"
-          "Spork"
-          "Pipe"
-          "Wire"
-          "Shelving units"
-          "Jewelry"
-          "Sunglasses"
-          "Holiday decorations"
+          "Plastic bottle",
+          "Can",
+          "Aluminum foil",
+          "Pie pan",
+          "Jug",
+          "Container",
+          "Lid",
+          "Bottle Cap",
+          "Bag",
+          "Plastic wrap",
+          "Cling wrap",
+          "Saran wrap",
+          "Squeeze bottle",
+          "Cup",
+          "Cutlery",
+          "Plant pots",
+          "Toys",
+          "Plastic buckets",
+          "Juice box",
+          "Juicebox",
+          "Paint can",
+          "Bakeware",
+          "Candle holder",
+          "Perfume bottle",
+          "Food container",
+          "Windowpane",
+          "Glassware",
+          "Bicycle",
+          "Printer cartridge",
+          "Coat-hanger",
+          "Hanger",
+          "Pot",
+          "Pan",
+          "Silverware",
+          "Fork",
+          "Knife",
+          "Spoon",
+          "Spork",
+          "Pipe",
+          "Wire",
+          "Shelving units",
+          "Jewelry",
+          "Sunglasses",
+          "Holiday decorations",
         };
 
         compostables = {
@@ -193,66 +193,66 @@ class Vision {
         };
 
         electronicRecycling = {
-          "Electronic"
-          "Phone"
-          "Laptop"
-          "Television"
-          "Battery"
-          "TV"
-          "Power cable"
-          "Printer"
-          "Microwave"
-          "Computer"
-          "Monitor"
-          "Scanner"
-          "Keyboard"
-          "Mouse"
-          "Speaker"
-          "Cell phone"
-          "Smart phone"
-          "Tablet"
-          "Camera"
-          "DVD player"
-          "VCR"
-          "Stereo system"
-          "Console"
-          "Hard drive"
-          "Flash drive"
-          "USB"
-          "Router"
-          "Switch"
-          "Modem"
-          "Power strip"
-          "Surge protector"
-          "Charger"
-          "Adapter"
-          "Cable"
-          "Cord"
-          "Landline phone"
-          "Electric toothbrush"
-          "Blender"
-          "Hair dryer"
-          "Hair straightener"
-          "Electric shaver"
-          "Power tool"
-          "Drill"
-          "Saw"
-          "Mitersaw"
-          "Jigsaw"
-          "Circularsaw"
-          "Leaf blower"
-          "Thermostat"
-          "Smoke detector"
-          "Carbon monoxide detector"
-          "GPS"
-          "Smartwatch"
-          "Fitbit"
-          "Headphones"
-          "Earbuds"
-          "Calculators"
-          "Projectors"
-          "Microscope"
-          "Lab instrument"
+          "Electronic",
+          "Phone",
+          "Laptop",
+          "Television",
+          "Battery",
+          "TV",
+          "Power cable",
+          "Printer",
+          "Microwave",
+          "Computer",
+          "Monitor",
+          "Scanner",
+          "Keyboard",
+          "Mouse",
+          "Speaker",
+          "Cell phone",
+          "Smart phone",
+          "Tablet",
+          "Camera",
+          "DVD player",
+          "VCR",
+          "Stereo system",
+          "Console",
+          "Hard drive",
+          "Flash drive",
+          "USB",
+          "Router",
+          "Switch",
+          "Modem",
+          "Power strip",
+          "Surge protector",
+          "Charger",
+          "Adapter",
+          "Cable",
+          "Cord",
+          "Landline phone",
+          "Electric toothbrush",
+          "Blender",
+          "Hair dryer",
+          "Hair straightener",
+          "Electric shaver",
+          "Power tool",
+          "Drill",
+          "Saw",
+          "Mitersaw",
+          "Jigsaw",
+          "Circularsaw",
+          "Leaf blower",
+          "Thermostat",
+          "Smoke detector",
+          "Carbon monoxide detector",
+          "GPS",
+          "Smartwatch",
+          "Fitbit",
+          "Headphones",
+          "Earbuds",
+          "Calculators",
+          "Projectors",
+          "Microscope",
+          "Lab instrument",
           "Watch",
           "Communication Device",
           "Mobile phone",
@@ -262,22 +262,22 @@ class Vision {
         };
 
         textileRecycling = {
-            "Textile"
-            "Shoe"
-            "Sheet"
-            "Towel"
-            "Curtain"
-            "Pillow"
-            "Mattress"
-            "Rug"
-            "Blanket"
-            "Stuffed animal"
-            "Backpack"
-            "Handbag"
-            "Wallet"
-            "Belt"
-            "Hat"
-            "Glove"
+            "Textile",
+            "Shoe",
+            "Sheet",
+            "Towel",
+            "Curtain",
+            "Pillow",
+            "Mattress",
+            "Rug",
+            "Blanket",
+            "Stuffed animal",
+            "Backpack",
+            "Handbag",
+            "Wallet",
+            "Belt",
+            "Hat",
+            "Glove",
             "Scarve",
             "Bedding",
             "Linens",
@@ -287,6 +287,8 @@ class Vision {
 
     static Disposal evaluateProperties(List<String> properties) {
         for(var i = 0; i < properties.length; i++) {
+            print(properties[i]);
+            
             if(compostables.contains(properties[i])) {
               print("Found ${properties[i]} as compost!");
               return Disposal.compost;

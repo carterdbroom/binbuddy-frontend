@@ -203,6 +203,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                 ),
                 LoginButton(
                   onTap: () {
+                    widget.user!.updateStats(foundDisposal!.location);
                     Navigator.pushNamedAndRemoveUntil(context, '/wastewizard', (route) => false);
                   },
                   child: const Text(

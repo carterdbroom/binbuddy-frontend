@@ -38,7 +38,7 @@ class User {
     password = "";
   }
 
-  void updateStats(DisposalLocation disposal) {
+  void updateStats(DisposalLocation disposal) async {
       switch (disposal) {
           case DisposalLocation.compost:
           stats!.numComposted += 1;
@@ -53,6 +53,7 @@ class User {
           score = score == null ? null : score = score! + 2;
           break;
           default:
+          stats!.numWasted += 1;
           break;
       }
 
