@@ -42,8 +42,8 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
       initCamera();
     }
     
-    void afterImage(XFile imgFile) async {
-        Disposal disposal = await Disposal.getDisposalLocation(imgFile);
+    void afterImage(XFile imgFile, bool withMaps) async {
+        Disposal disposal = await Disposal.getDisposalLocation(imgFile, withMaps);
 
         setState(() {
             foundDisposal = disposal;
@@ -53,6 +53,12 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
     void setMode(String s) {
         setState(() {
           mode = s;
+        });
+    }
+
+    void retry() {
+        setState(() {
+          foundDisposal = null;
         });
     }
 
@@ -87,6 +93,8 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
               ),
             );
 
+        Widget retryButton = LoginButton(onTap: retry, child: const Text("Item was incorrect, rescan"));
+
         if(mode == "") {
           return SelectMode(setMode: setMode, bar: bar, user: widget.user, setUser: widget.setUser,);
         }
@@ -94,7 +102,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
         if (camera != null && foundDisposal == null) {
           return Scaffold(
             appBar: barWithBack,
-            body: TakePictureScreen(camera: camera!, callAfter: afterImage),
+            body: TakePictureScreen(camera: camera!, callAfter: (img) => { afterImage(img, mode == "Discover") }),
             bottomNavigationBar: Bottom(user: widget.user, setUser: widget.setUser,),
           );
         } else if (camera != null && foundDisposal != null && mode == "Track") {
@@ -103,18 +111,18 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  "Scan Complete!",
-                  style: TextStyle(
+                Text(
+                  "Scan Complete! Item Found: ${foundDisposal!.item}",
+                  style: const TextStyle(
                     fontFamily: "Monospace",
-                    fontSize: 20,
+                    fontSize: 18,
                   )
                 ),
                 const Text(
                   "Where Should It Go?",
                   style: TextStyle(
                     fontFamily: "Monospace",
-                    fontSize: 20,
+                    fontSize: 24,
                   ),
                 ),
                 Row(
@@ -187,6 +195,12 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
                     ),
                   ],                                    
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    retryButton
+                  ],
+                )
               ],
             ),
             bottomNavigationBar: Bottom(user: widget.user, setUser: widget.setUser,),
@@ -241,13 +255,17 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
             ),
           );
         } else if (camera != null && foundDisposal != null && mode == "Discover") {
+          Widget itemFound = Text(
+            "Item Found: ${foundDisposal!.item}",
+            style: const TextStyle(fontSize: 18)
+          );
           Widget title = Text(
             "Disposal Location: ${foundDisposal!.locationKey}",
             style: const TextStyle(fontSize: 24)
           );
           Widget description = Text(foundDisposal!.description);
 
-          List<Widget> content = [ title, description ];
+          List<Widget> content = [ itemFound, title, description ];
 
           switch(foundDisposal!.location) {
               case DisposalLocation.unknown:
@@ -280,14 +298,20 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
           }
 
           content.add(
-            LoginButton(
-              onTap: () => {
-                setState(() {
-                  mode = "";
-                  foundDisposal = null;
-                })
-              }, 
-              child: const Text("Continue", style: TextStyle(fontSize: 18),)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                LoginButton(
+                  onTap: () => {
+                    setState(() {
+                      mode = "";
+                      foundDisposal = null;
+                    })
+                  }, 
+                  child: const Text("Continue", style: TextStyle(fontSize: 18),)
+                ),
+                retryButton
+              ],
             )
           );
 

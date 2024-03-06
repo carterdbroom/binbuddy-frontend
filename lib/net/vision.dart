@@ -291,23 +291,23 @@ class Vision {
             
             if(compostables.contains(properties[i])) {
               print("Found ${properties[i]} as compost!");
-              return Disposal.compost;
+              return Disposal.Compost(properties[i]);
             }
             if(recyclables.contains(properties[i])) {
               print("Found ${properties[i]} as recycling!");
-              return Disposal.recycling;
+              return Disposal.Recycling(properties[i]);
             }
             if(electronicRecycling.contains(properties[i])) {
               print("Found ${properties[i]} as e-recycling!");
-              return Disposal.electronic;
+              return Disposal.Electronic(properties[i]);
             }
             if(textileRecycling.contains(properties[i])) {
               print("Found ${properties[i]} as textile-recycling!");
-              return Disposal.textile;
+              return Disposal.Textile(properties[i]);
             }
         }
 
         print("Found nothing, garbage :(");
-        return Disposal.garbage;
+        return Disposal.Garbage(properties[0]);
     }
 }
