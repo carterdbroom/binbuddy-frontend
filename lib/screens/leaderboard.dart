@@ -56,6 +56,20 @@ class _LeaderboardState extends State<Leaderboard> {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration.zero, () {
+      if (widget.user == null) {
+        Navigator.pushNamedAndRemoveUntil(context, '/landing', (route) => false);
+      }
+    });
+
+    if(widget.user == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

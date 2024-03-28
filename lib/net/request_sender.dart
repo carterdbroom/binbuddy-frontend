@@ -31,7 +31,7 @@ class RequestSender {
       final result = await db().collection(collection)
                           .where('id', isEqualTo: uid)
                           .get();
-  
+      
       if(result.docs.isEmpty) {
           throw "User not found";
       }
@@ -44,6 +44,8 @@ class RequestSender {
 
   static Future<User> tryLogin(String email, String password) async {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+
+      print("Login Successful, getting user...");
 
       return await getUser(credential.user!.uid);
   }

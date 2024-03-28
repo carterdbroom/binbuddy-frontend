@@ -8,11 +8,11 @@ import 'package:segment_bar/segment_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({
+  const HomePage({
     required this.user,
     required this.setUser,
     super.key}
-    );
+  );
 
   final User? user;
   final Function setUser;
@@ -35,6 +35,14 @@ class HomePage extends StatelessWidget {
         Navigator.pushNamedAndRemoveUntil(context, '/landing', (route) => false);
       }
     });
+
+    if(user == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
 
     int garbageValue = user!.stats!.numWasted;
     int recyclingValue = user!.stats!.numRecycled;

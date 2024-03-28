@@ -27,6 +27,10 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
     void initCamera() async {
       WidgetsFlutterBinding.ensureInitialized();
 
+      if(widget.user == null) {
+        return;
+      }
+
       // Obtain a list of the available cameras on the device.
       final cameras = await availableCameras();
 
@@ -64,7 +68,21 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
 
     @override
     Widget build(BuildContext context) { 
-        
+        Future.delayed(Duration.zero, () {
+          if (widget.user == null) {
+            Navigator.pushNamedAndRemoveUntil(context, '/landing', (route) => false);
+          }
+        });
+
+        if(widget.user == null) {
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }  
+
+
         var backButton = IconButton(
           icon: const Icon(Icons.arrow_back_outlined),
           onPressed: () {
