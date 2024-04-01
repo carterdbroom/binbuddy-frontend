@@ -1,6 +1,5 @@
 import 'package:binbuddy_frontend/models/user.dart';
 import 'package:binbuddy_frontend/net/disposal.dart';
-import 'package:binbuddy_frontend/screens/home.dart';
 import 'package:binbuddy_frontend/screens/widgets/bottom_nav_bar.dart';
 import 'package:binbuddy_frontend/screens/widgets/camera.dart';
 import 'package:binbuddy_frontend/screens/widgets/login_button.dart';

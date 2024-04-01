@@ -24,21 +24,21 @@ class _LoginPageState extends State<LoginPage> {
 
   void login() async  {
       User? user;
-      
-      try {
-        if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
-          showDialog(
-            context: context,
-            builder: (context) => const InformationDialog(
-              title: "An error has occured.",
-              message: "Please fill in all fields.",
-            ),
-          );
-          
-          return;
-        }
+      if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
+        showDialog(
+          context: context,
+          builder: (context) => const InformationDialog(
+            title: "An error has occured.",
+            message: "Please fill in all fields.",
+          ),
+        );
         
+        return;
+      }
+
+      try { 
         user = await RequestSender.tryLogin(_emailController.text, _passwordController.text);
+        widget.setUser(user);
       } on FirebaseAuthException catch (e) {
         showDialog(
           context: context,
@@ -59,13 +59,7 @@ class _LoginPageState extends State<LoginPage> {
         );
 
         _passwordController.clear();
-      } finally {
-        if(user != null) {
-          print(user.toMap());
-
-          await widget.setUser(user);
-        }
-      }
+      } 
 
       //User user = await RequestSender.tryLogin(_emailController.text, _passwordController.text);
       //widget.setUser(user);
