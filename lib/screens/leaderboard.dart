@@ -96,6 +96,14 @@ class Leaders extends StatelessWidget {
       return i.toString();
     }
 
+    Color getColor(int i) {
+      if(i % 2 == 0) {
+        return const Color.fromARGB(50, 100, 100, 100);
+      } else {
+        return const Color.fromARGB(125, 100, 100, 100);
+      }
+    }
+
     @override
     Widget build(BuildContext context) {
           return ListView.builder (
@@ -108,6 +116,7 @@ class Leaders extends StatelessWidget {
                 leading: Text(plusOne(index)),
                 title: Text(leaderboard[index].name!),
                 trailing: Text(leaderboard[index].score!.toString()),
+                tileColor: getColor(index) 
               );
             },
           );
