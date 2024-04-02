@@ -1,8 +1,5 @@
 import 'package:binbuddy_frontend/models/user.dart';
-import 'package:binbuddy_frontend/screens/landing.dart';
 import 'package:binbuddy_frontend/screens/widgets/bottom_nav_bar.dart';
-import 'package:binbuddy_frontend/screens/leaderboard.dart';
-import 'package:binbuddy_frontend/screens/waste_wizard.dart';
 import 'package:segment_bar/percent_graph_model.dart';
 import 'package:segment_bar/segment_bar.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,4 @@
 import 'package:binbuddy_frontend/models/user.dart';
-import 'package:binbuddy_frontend/screens/home.dart';
-import 'package:binbuddy_frontend/screens/leaderboard.dart';
-import 'package:binbuddy_frontend/screens/waste_wizard.dart';
 import 'package:flutter/material.dart';
 
 int _selectedIndex = 0;

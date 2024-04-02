@@ -1,7 +1,4 @@
 import 'package:binbuddy_frontend/models/user.dart';
-import 'package:binbuddy_frontend/screens/home.dart';
-import 'package:binbuddy_frontend/screens/login.dart';
-import 'package:binbuddy_frontend/screens/signup.dart';
 import 'package:binbuddy_frontend/screens/widgets/login_button.dart';
 import 'package:flutter/material.dart';
 

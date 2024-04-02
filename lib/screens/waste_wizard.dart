@@ -345,7 +345,7 @@ class _WasteWizardPageState extends State<WasteWizardPage> {
 }
 
 class SelectMode extends StatelessWidget {
-    SelectMode({super.key, required this.setMode, required this.bar, required this.user, required this.setUser});
+    const SelectMode({super.key, required this.setMode, required this.bar, required this.user, required this.setUser});
 
     final PreferredSizeWidget bar;
     final Function setMode;
@@ -353,7 +353,7 @@ class SelectMode extends StatelessWidget {
     final Function setUser;
 
 
-    TextStyle tStyle = const 
+    final TextStyle tStyle = const 
       TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
         fontSize: 24
