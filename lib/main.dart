@@ -9,7 +9,7 @@ import 'models/user.dart';
 import 'screens/home.dart';
 import 'themes/theme_constants.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'firebase_options.dart' show DefaultFirebaseOptions;
+import 'hidden/firebase_options.dart' show DefaultFirebaseOptions;
 void main() async {
   runApp(const MyApp());
 

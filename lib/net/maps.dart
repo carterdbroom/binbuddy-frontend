@@ -2,9 +2,10 @@ import "dart:convert";
 import 'package:geolocator/geolocator.dart';
 import "package:http/http.dart" as http;
 import "package:google_maps_flutter/google_maps_flutter.dart";
+import "package:binbuddy_frontend/hidden/keys.dart";
 
 class Maps {
-    static const String API_KEY = "AIzaSyBbBxg-WAsX9eJEpseirhyJbmijwcuqqCw";
+    //static const String API_KEY = "AIzaSyBbBxg-WAsX9eJEpseirhyJbmijwcuqqCw";
 
     static Future<http.Response> sendTextQuery(String query, num lat, num long, {num radius = 2000, num resultCount = 10}) {
         String apiHeader = "https://places.googleapis.com/v1/places:searchText";
@@ -13,7 +14,7 @@ class Maps {
             Uri.parse(apiHeader),
             headers: {
                 "Content-Type": "application/json",
-                "X-Goog-Api-Key": API_KEY,
+                "X-Goog-Api-Key": Keys.MAPS_KEY,
                 "X-Goog-FieldMask": "places.location,places.formattedAddress,places.displayName.text",
             },
             body: jsonEncode(

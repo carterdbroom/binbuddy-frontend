@@ -7,7 +7,7 @@
 
 import 'dart:io';
 
-import 'package:binbuddy_frontend/firebase_options.dart';
+import 'package:binbuddy_frontend/hidden/firebase_options.dart';
 import 'package:binbuddy_frontend/models/user.dart';
 import 'package:binbuddy_frontend/net/disposal.dart';
 import 'package:binbuddy_frontend/net/request_sender.dart';
